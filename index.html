@@ -1,78 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Portfolio</title>
-    <link rel="stylesheet" href="index.css">
-    <!----Font awesome cdn font icon css -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arif Billah Syahruli — Portfolio</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="hero-header">
-        <div class="wrapper">
-            <header>
-                <div class="logo">
-                   <i class="fa-solid fa-a"></i>
-                   <div class="logo-text">Arif Billah</div>
-                </div>
-                <nav>
-                    <div class="togglebtn">
-                       <span></span>
-                       <span></span>
-                       <span></span>
-                    </div>
-                    <ul class="navlinks">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-            </header>
-            <div class="container">
-                <div class="hero-pic">
-                    <img src="arif ganteng.png" alt="profile pic">
-                </div>
-                <div class="hero-text">
-                    <h5>Hi I'm <span class="input">Web Developer</span></h5>
-                    <h1>Arif Billah Syahruli</h1>
-                    <p>pelajar dari smk IDN Jonggol,kelas 10 dengan jurusan RPL (rekayasa perangkat lunak)</p>
-                    <div class="btn-group">
-                        <a href="#" class="btn active">Download CV</a>
-                        <a href="#" class="btn">Contact</a>
-                    </div>
 
-                   <div class="social">
-                    <a href="https://www.instagram.com/bllhsyh/"><i class="fa-brands fa-instagram"></i> </a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i> </a>
-                    <a href="https://www.youtube.com/@borsskiee"><i class="fa-brands fa-youtube"></i> </a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i> </a>
-                   </div>
-                </div>
-            </div>
-        </div>
+<!-- Bat signal flash overlay -->
+<div class="signal-flash" id="signalFlash"></div>
+
+<!-- floating bat silhouettes -->
+<div class="bat-field" aria-hidden="true">
+  <svg class="bat b1" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
+  <svg class="bat b2" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
+  <svg class="bat b3" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
+</div>
+
+<!-- reusable bat shape def -->
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="bat-shape" viewBox="0 0 100 55">
+    <path d="M50,16 L55,10 L62,18 L82,8 L68,22 L96,20 L74,28 L90,40 L60,34 L56,46 L50,28 L44,46 L40,34 L10,40 L26,28 L4,20 L32,22 L18,8 L38,18 L45,10 Z"/>
+  </symbol>
+</svg>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand" id="brandLogo">
+      <svg class="brand-bat" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
+      <span>ARIF <em>BILLAH</em></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#top" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="signal-beam" aria-hidden="true"></div>
+  <div class="hero-grid">
+    <div class="hero-text" data-reveal>
+      <p class="eyebrow">// CASE FILE — GOTHAM ACADEMY</p>
+      <h5>Halo, saya <span class="typed"></span></h5>
+      <h1>Arif Billah <br>Syahruli</h1>
+      <p class="lede">Pelajar SMK IDN Jonggol, kelas 10 jurusan Rekayasa Perangkat Lunak (RPL) — membangun kode di siang hari, menyalakan bat-signal di malam hari.</p>
+      <div class="btn-row">
+        <a href="#contact" class="btn btn-gold">Kirim Sinyal <i class="fa-solid fa-bolt"></i></a>
+        <a href="#" class="btn btn-ghost">Download CV</a>
+      </div>
+      <div class="social">
+        <a href="https://www.instagram.com/bllhsyh/" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@borsskiee" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+      </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.0/typed.js"></script>
-     <script>
-        /** creating button click show hide navbar **/
-        var togglebtn=document.querySelector(".togglebtn");
-        var nav=document.querySelector(".navlinks");
-        var links=document.querySelector(".navlinks li");
+    <div class="hero-pic" data-reveal>
+      <div class="emblem-ring"></div>
+      <img src="arif-ganteng.png" alt="Foto profil Arif Billah Syahruli">
+    </div>
+  </div>
+  <a href="#about" class="scroll-cue" aria-label="Scroll ke bawah"><span></span></a>
+</section>
 
-        togglebtn.addEventListener("click", function(){
-            this.classList.toggle("click");
-            nav.classList.toggle("open")
-        })
+<section class="about" id="about">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>// DOSSIER 01</p>
+    <h2 data-reveal>Origin Story</h2>
+    <div class="about-grid">
+      <div class="about-photo" data-reveal>
+        <img src="arif-ganteng.png" alt="Arif Billah Syahruli">
+        <div class="corner tl"></div><div class="corner br"></div>
+      </div>
+      <div class="about-copy" data-reveal>
+        <p>Perkenalkan, nama saya <strong>Arif Billah Syahruli</strong>. Saya berasal dari Karawang dan saat ini sedang menempa ilmu di SMK IDN Jonggol, duduk di kelas 10 dengan mengambil jurusan Rekayasa Perangkat Lunak (RPL).</p>
+        <p>Seperti seorang vigilante yang merakit gadget di malam hari, saya senang bereksperimen dengan kode — merancang halaman web, mengulik logika program, dan terus belajar hal baru setiap hari.</p>
+        <div class="stat-row">
+          <div class="stat"><span>10</span>Kelas</div>
+          <div class="stat"><span>RPL</span>Jurusan</div>
+          <div class="stat"><span>KRW</span>Asal Kota</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="skills" id="skills">
+  <div class="wrap">
+    <p class="eyebrow" data-reveal>// GADGET ARSENAL</p>
+    <h2 data-reveal>My Skills</h2>
+    <div class="skill-grid">
 
-        var typed=new Typed(".input",{
-            strings:["Web Developer","Game Developer","Ui Designer"],
-            typedSpeed:70,
-            backSpeed:55,
-            loop:true
-        })
-     </script>
-    
+      <div class="skill-card" data-reveal>
+        <div class="skill-top"><i class="fa-brands fa-html5"></i><h3>HTML</h3></div>
+        <div class="bar"><div class="fill" data-level="90"></div></div>
+        <span class="level">90%</span>
+      </div>
+
+      <div class="skill-card" data-reveal>
+        <div class="skill-top"><i class="fa-brands fa-css3-alt"></i><h3>CSS</h3></div>
+        <div class="bar"><div class="fill" data-level="80"></div></div>
+        <span class="level">80%</span>
+      </div>
+
+      <div class="skill-card" data-reveal>
+        <div class="skill-top"><i class="fa-brands fa-js"></i><h3>JavaScript</h3></div>
+        <div class="bar"><div class="fill" data-level="50"></div></div>
+        <span class="level">50%</span>
+      </div>
+
+      <div class="skill-card" data-reveal>
+        <div class="skill-top"><i class="fa-brands fa-python"></i><h3>Python</h3></div>
+        <div class="bar"><div class="fill" data-level="20"></div></div>
+        <span class="level">20%</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap contact-grid">
+    <div class="contact-copy" data-reveal>
+      <p class="eyebrow">// SIGNAL THE BAT</p>
+      <h2>Ada proyek? <br>Nyalakan sinyalnya.</h2>
+      <p class="lede">Isi form di samping, dan saya akan merespons secepat Batmobile melaju di jalanan Gotham.</p>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63453.76656496099!2d107.24934663386534!3d-6.282074670445796!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69780f4b22834f%3A0x3f21d3f70aaef632!2sKarawang%20Barat%2C%20Kec.%20Karawang%20Bar.%2C%20Karawang%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1786603935002!5m2!1sid!2sid" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <form class="contact-form" data-reveal action="https://formsubmit.co/aripbillahsyahruri@gmail.com" method="post">
+      <label>Nama</label>
+      <input type="text" placeholder="Nama anda....." name="Nama" required>
+      <label>Email</label>
+      <input type="email" placeholder="Email anda...." name="Email" required>
+      <label>Umur</label>
+      <input type="number" placeholder="Umur anda...." name="Usia">
+      <label>Gender</label>
+      <select name="gender">
+        <option value="">Pilih gender anda</option>
+        <option value="pria">Pria</option>
+        <option value="wanita">Wanita</option>
+      </select>
+      <label>Pesan</label>
+      <textarea name="Pesan" placeholder="Tulis pesan anda..." rows="4"></textarea>
+      <button type="submit">Kirim Pesan <i class="fa-solid fa-paper-plane"></i></button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <svg class="brand-bat small" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
+    <p>&copy; <span id="year"></span> Arif Billah Syahruli — Gotham never sleeps, neither does the code.</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.16/typed.umd.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
