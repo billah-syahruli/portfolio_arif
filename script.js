@@ -31,12 +31,71 @@ if (window.Typed) {
   });
 }
 
-/* bat-signal flash when the logo is clicked */
-const brandLogo = document.getElementById("brandLogo");
-const signalFlash = document.getElementById("signalFlash");
-brandLogo.addEventListener("click", (e) => {
-  signalFlash.classList.add("active");
-  setTimeout(() => signalFlash.classList.remove("active"), 450);
+/* cursor spotlight glow, smoothed with lerp */
+const spotlight = document.getElementById("spotlight");
+if (spotlight && matchMedia("(hover:hover)").matches) {
+  let mouseX = innerWidth / 2, mouseY = innerHeight / 2, curX = mouseX, curY = mouseY;
+  window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    spotlight.classList.add("active");
+  });
+  window.addEventListener("mouseleave", () => spotlight.classList.remove("active"));
+  (function loop() {
+    curX += (mouseX - curX) * 0.15;
+    curY += (mouseY - curY) * 0.15;
+    spotlight.style.setProperty("--x", curX + "px");
+    spotlight.style.setProperty("--y", curY + "px");
+    requestAnimationFrame(loop);
+  })();
+}
+
+/* magnetic tilt on hero photo + skill cards */
+function addTilt(el, intensity = 10) {
+  el.style.transition = "transform .15s ease-out";
+  el.addEventListener("mousemove", (e) => {
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width - 0.5;
+    const py = (e.clientY - r.top) / r.height - 0.5;
+    el.style.transform = `perspective(600px) rotateY(${px * intensity}deg) rotateX(${-py * intensity}deg)`;
+  });
+  el.addEventListener("mouseleave", () => { el.style.transform = ""; });
+}
+if (matchMedia("(hover:hover)").matches) {
+  document.querySelectorAll(".skill-card").forEach(el => addTilt(el, 8));
+  const heroPic = document.querySelector(".hero-pic");
+  if (heroPic) addTilt(heroPic, 10);
+}
+
+/* count-up animation for stats + skill percentages */
+const counters = document.querySelectorAll("[data-count]");
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.count, 10);
+      const suffix = el.classList.contains("level") ? "%" : "";
+      const duration = 1200;
+      const start = performance.now();
+      function step(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.floor(eased * target) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target + suffix;
+      }
+      requestAnimationFrame(step);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(el => counterObserver.observe(el));
+
+/* thin progress bar that fills as the page is scrolled */
+const scrollProgress = document.getElementById("scrollProgress");
+window.addEventListener("scroll", () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+  scrollProgress.style.width = pct + "%";
 });
 
 /* scroll reveal + animated skill bars via IntersectionObserver */

@@ -7,34 +7,22 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Bat signal flash overlay -->
-<div class="signal-flash" id="signalFlash"></div>
+<!-- thin progress bar that fills as the page is scrolled -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- floating bat silhouettes -->
-<div class="bat-field" aria-hidden="true">
-  <svg class="bat b1" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
-  <svg class="bat b2" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
-  <svg class="bat b3" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
-</div>
-
-<!-- reusable bat shape def -->
-<svg width="0" height="0" style="position:absolute">
-  <symbol id="bat-shape" viewBox="0 0 100 55">
-    <path d="M50,16 L55,10 L62,18 L82,8 L68,22 L96,20 L74,28 L90,40 L60,34 L56,46 L50,28 L44,46 L40,34 L10,40 L26,28 L4,20 L32,22 L18,8 L38,18 L45,10 Z"/>
-  </symbol>
-</svg>
+<!-- glow that follows the cursor -->
+<div class="spotlight" id="spotlight"></div>
 
 <header class="nav" id="siteNav">
   <div class="nav-inner">
     <a href="#top" class="brand" id="brandLogo">
-      <svg class="brand-bat" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
-      <span>ARIF <em>BILLAH</em></span>
+      <span>ARIF<em>.BILLAH</em></span>
     </a>
     <button class="burger" id="burger" aria-label="Buka menu">
       <span></span><span></span><span></span>
@@ -49,12 +37,13 @@
 </header>
 
 <section class="hero" id="top">
-  <div class="signal-beam" aria-hidden="true"></div>
+  <div class="orb orb-amber orb-a" style="width:420px;height:420px;top:-140px;left:-120px"></div>
+  <div class="orb orb-violet orb-b" style="width:380px;height:380px;bottom:-160px;right:-100px"></div>
   <div class="hero-grid">
     <div class="hero-text" data-reveal>
-      <p class="eyebrow">// CASE FILE — GOTHAM ACADEMY</p>
+      <p class="eyebrow">// PORTFOLIO</p>
       <h5>Halo, saya <span class="typed"></span></h5>
-      <h1>Arif Billah <br>Syahruli</h1>
+      <h1>Arif Billah <br><span class="grad-text">Syahruli</span></h1>
       <p class="lede">Pelajar SMK IDN Jonggol, kelas 10 jurusan Rekayasa Perangkat Lunak (RPL) — membangun kode di siang hari, menyalakan bat-signal di malam hari.</p>
       <div class="btn-row">
         <a href="#contact" class="btn btn-gold">Kirim Sinyal <i class="fa-solid fa-bolt"></i></a>
@@ -67,28 +56,45 @@
         <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
       </div>
     </div>
-    <div class="hero-pic" data-reveal>
-      <div class="emblem-ring"></div>
+    <div class="hero-pic" data-reveal style="--i:1">
       <img src="arif-ganteng.png" alt="Foto profil Arif Billah Syahruli">
     </div>
   </div>
   <a href="#about" class="scroll-cue" aria-label="Scroll ke bawah"><span></span></a>
 </section>
 
+<div class="marquee">
+  <div class="marquee-track" id="marqueeTrack">
+    <span><i class="fa-brands fa-html5"></i>HTML</span>
+    <span><i class="fa-brands fa-css3-alt"></i>CSS</span>
+    <span><i class="fa-brands fa-js"></i>JavaScript</span>
+    <span><i class="fa-brands fa-python"></i>Python</span>
+    <span><i class="fa-brands fa-git-alt"></i>Git</span>
+    <span><i class="fa-solid fa-code"></i>RPL — SMK IDN Jonggol</span>
+    <span><i class="fa-brands fa-html5"></i>HTML</span>
+    <span><i class="fa-brands fa-css3-alt"></i>CSS</span>
+    <span><i class="fa-brands fa-js"></i>JavaScript</span>
+    <span><i class="fa-brands fa-python"></i>Python</span>
+    <span><i class="fa-brands fa-git-alt"></i>Git</span>
+    <span><i class="fa-solid fa-code"></i>RPL — SMK IDN Jonggol</span>
+  </div>
+</div>
+
 <section class="about" id="about">
+  <div class="orb orb-violet orb-b" style="width:340px;height:340px;top:20%;right:-140px"></div>
   <div class="wrap">
     <p class="eyebrow" data-reveal>// DOSSIER 01</p>
     <h2 data-reveal>Origin Story</h2>
     <div class="about-grid">
       <div class="about-photo" data-reveal>
         <img src="arif-ganteng.png" alt="Arif Billah Syahruli">
-        <div class="corner tl"></div><div class="corner br"></div>
+        <span class="photo-tag">IMG_001</span>
       </div>
-      <div class="about-copy" data-reveal>
+      <div class="about-copy" data-reveal style="--i:1">
         <p>Perkenalkan, nama saya <strong>Arif Billah Syahruli</strong>. Saya berasal dari Karawang dan saat ini sedang menempa ilmu di SMK IDN Jonggol, duduk di kelas 10 dengan mengambil jurusan Rekayasa Perangkat Lunak (RPL).</p>
         <p>Seperti seorang vigilante yang merakit gadget di malam hari, saya senang bereksperimen dengan kode — merancang halaman web, mengulik logika program, dan terus belajar hal baru setiap hari.</p>
         <div class="stat-row">
-          <div class="stat"><span>10</span>Kelas</div>
+          <div class="stat"><span data-count="10">0</span>Kelas</div>
           <div class="stat"><span>RPL</span>Jurusan</div>
           <div class="stat"><span>KRW</span>Asal Kota</div>
         </div>
@@ -98,33 +104,34 @@
 </section>
 
 <section class="skills" id="skills">
+  <div class="orb orb-amber orb-a" style="width:360px;height:360px;bottom:-120px;left:-100px"></div>
   <div class="wrap">
     <p class="eyebrow" data-reveal>// GADGET ARSENAL</p>
     <h2 data-reveal>My Skills</h2>
     <div class="skill-grid">
 
-      <div class="skill-card" data-reveal>
+      <div class="skill-card" data-reveal style="--i:0">
         <div class="skill-top"><i class="fa-brands fa-html5"></i><h3>HTML</h3></div>
         <div class="bar"><div class="fill" data-level="90"></div></div>
-        <span class="level">90%</span>
+        <span class="level" data-count="90">0%</span>
       </div>
 
-      <div class="skill-card" data-reveal>
+      <div class="skill-card" data-reveal style="--i:1">
         <div class="skill-top"><i class="fa-brands fa-css3-alt"></i><h3>CSS</h3></div>
         <div class="bar"><div class="fill" data-level="80"></div></div>
-        <span class="level">80%</span>
+        <span class="level" data-count="80">0%</span>
       </div>
 
-      <div class="skill-card" data-reveal>
+      <div class="skill-card" data-reveal style="--i:2">
         <div class="skill-top"><i class="fa-brands fa-js"></i><h3>JavaScript</h3></div>
         <div class="bar"><div class="fill" data-level="50"></div></div>
-        <span class="level">50%</span>
+        <span class="level" data-count="50">0%</span>
       </div>
 
-      <div class="skill-card" data-reveal>
+      <div class="skill-card" data-reveal style="--i:3">
         <div class="skill-top"><i class="fa-brands fa-python"></i><h3>Python</h3></div>
         <div class="bar"><div class="fill" data-level="20"></div></div>
-        <span class="level">20%</span>
+        <span class="level" data-count="20">0%</span>
       </div>
 
     </div>
@@ -132,6 +139,7 @@
 </section>
 
 <section class="contact" id="contact">
+  <div class="orb orb-violet orb-b" style="width:320px;height:320px;top:-80px;right:-100px"></div>
   <div class="wrap contact-grid">
     <div class="contact-copy" data-reveal>
       <p class="eyebrow">// SIGNAL THE BAT</p>
@@ -142,7 +150,7 @@
       </div>
     </div>
 
-    <form class="contact-form" data-reveal action="https://formsubmit.co/aripbillahsyahruri@gmail.com" method="post">
+    <form class="contact-form" data-reveal style="--i:1" action="https://formsubmit.co/aripbillahsyahruri@gmail.com" method="post">
       <label>Nama</label>
       <input type="text" placeholder="Nama anda....." name="Nama" required>
       <label>Email</label>
@@ -164,7 +172,6 @@
 
 <footer class="footer">
   <div class="wrap">
-    <svg class="brand-bat small" viewBox="0 0 100 55"><use href="#bat-shape"/></svg>
     <p>&copy; <span id="year"></span> Arif Billah Syahruli — Gotham never sleeps, neither does the code.</p>
   </div>
 </footer>
